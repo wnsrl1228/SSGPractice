@@ -38,7 +38,7 @@ public class App {
         System.out.println("== 명언 SSG ==");
 
         Scanner sc = new Scanner(System.in);
-        int wiseSayinglastId = 1;
+        int wiseSayinglastId = 0;
         outer:while ( true ){
             System.out.printf("명령) ");
             String cmd = sc.nextLine().trim();
@@ -49,7 +49,10 @@ public class App {
                     String content = sc.nextLine();
                     System.out.printf("작가 : ");
                     String author = sc.nextLine();
-                    System.out.println(wiseSayinglastId++ +"번 명언이 등록되었습니다.");
+                    int id = ++wiseSayinglastId;
+                    WiseSaying wiseSaying = new WiseSaying(id, content, author);
+                    System.out.println(wiseSaying);
+                    System.out.println(id +"번 명언이 등록되었습니다.");
                     break;
                 case "삭제":
                 case "수정":
