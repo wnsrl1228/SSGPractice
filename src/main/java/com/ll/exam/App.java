@@ -29,6 +29,7 @@ public class App {
                     remove(rq);
                     break;
                 case "수정":
+                    edit(rq);
                     break;
 
                 case "목록":
@@ -40,6 +41,28 @@ public class App {
         }
 
         sc.close();
+    }
+
+    private void edit(Rq rq) {
+        int paramId = rq.getIntParam("id",0);
+        if (paramId == 0){
+            System.out.println("id를 입력해주세요");
+            return;
+        }
+        WiseSaying wiseSaying = findById(paramId);
+
+        if (wiseSaying == null ){
+            System.out.println("존재하지 않은 id입니다");
+            return;
+        }
+
+        System.out.println("기존의 명언 : " + wiseSaying.content);
+        System.out.printf("새 명언 : ");
+        String content = sc.nextLine();
+        wiseSaying.content = content;
+
+        System.out.printf("%d번 명언이 수정되었습니다.\n",paramId);
+
     }
 
     private void list() {
