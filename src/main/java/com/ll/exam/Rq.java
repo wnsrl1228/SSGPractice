@@ -45,6 +45,18 @@ public class Rq {
 
         return Integer.parseInt(paramValue);
     }
+    public String getParam(String paramName, String defaultValue) {
+        if ( queryParams.containsKey(paramName) == false ) {
+            return defaultValue;
+        }
+        String value = queryParams.get(paramName);
+
+        if ( value.length() == 0 ) {
+            return defaultValue;
+        }
+
+        return value;
+    }
 
     public String getPath() {
         return path;
